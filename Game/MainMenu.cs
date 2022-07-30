@@ -1,35 +1,24 @@
 namespace Game;
 
-using Raylib_cs;
+using Raylib_CsLo;
 using System.Numerics;
 
-using SmUI;
-
-public class MainMenu : Menu
+public class MainMenu : IMenu
 {
+	private static Rectangle playButton = GameUtil.Button(30, 210);
+	private static Rectangle credButton = GameUtil.Button(30, 290);
 
-	private static Rectangle buttonRect = new Rectangle(60.0f, 190.0f, 124.0f, 64.0f);
-	private static SmButton PlayButton = new SmButton(buttonRect, "Play");
+	public void Draw() 
+	{
+		GameUtil.DrawText(30, 50, "Smithle", 72);
 
-	public void Draw() {
-		//Raylib.DrawRectangle(10, 10, 30, 50, Color.BLACK);
-		Raylib.DrawTextEx(
-			GameData.SmithleFont,
-			"Smithle",
-			new Vector2{X = 50.0f, Y = 50.0f},
-			56.0f,
-			.5f,
-			Color.BLACK
-		);
+		GameUtil.DrawText(30, 120,
+			"a game by boons and Smertieboi", 32.0f);
 
-		PlayButton.Draw();
-
-		if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_BUTTON_LEFT) 
-				&& PlayButton.IsClicked(Raylib.GetMousePosition())) {
-			GameData.menu = GameMenu.SMITHY;
-		} else if (PlayButton.IsClicked(Raylib.GetMousePosition())) {
-			PlayButton.SetClicked(false);
-		}
+		if (RayGui.GuiButton(playButton, "Play"))
+			GameData.Menu = GameMenu.SMITHY;
 		
+		if (RayGui.GuiButton(credButton, "Credits"))
+			GameData.Menu = GameMenu.CREDITS;
 	}
 }

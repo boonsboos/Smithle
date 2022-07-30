@@ -1,6 +1,6 @@
 namespace Game;
 
-public interface Menu
+public interface IMenu
 {
 	public void Draw();
 }

@@ -6,6 +6,8 @@ public enum GameMenu
 	SMITHY,
 	UPGRADE,
 	TRADE,
+	INVENTORY,
+	CREDITS,
 }
 
 public enum GameAge
