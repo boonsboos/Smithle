@@ -5,7 +5,7 @@ using System.Numerics;
 
 using Game;
 
-public class SmButton
+public class SmButton : ISmItem
 {
 	private Rectangle r;
 	private String text;
@@ -14,6 +14,7 @@ public class SmButton
 	public SmButton(Rectangle r, String text)
 	{
 		this.r = r;
+		this.r.width += 4;
 		this.text = text;
 	}
 
@@ -29,8 +30,8 @@ public class SmButton
 		Raylib.DrawTextEx(
 			GameData.SmithleFont,
 			this.text,
-			new Vector2{X = this.r.x + 4, Y = this.r.y + 4 },
-			this.r.height - 4.0f,
+			new Vector2{X = this.r.x + 12, Y = this.r.y + 8 },
+			this.r.height - 12.0f,
 			0.5f,
 			Color.BLACK
 		);
@@ -40,5 +41,10 @@ public class SmButton
 	{
 		this.clicked = Raylib.CheckCollisionPointRec(pos, this.r);
 		return this.clicked;
+	}
+
+	public void SetClicked(bool c)
+	{
+		this.clicked = c;
 	}
 }

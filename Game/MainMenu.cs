@@ -8,8 +8,8 @@ using SmUI;
 public class MainMenu : Menu
 {
 
-	private static Rectangle ButtonRect = new Rectangle(60.0f, 190.0f, 120.0f, 60.0f);
-	private static SmButton PlayButton = new SmButton(ButtonRect, "Play");
+	private static Rectangle buttonRect = new Rectangle(60.0f, 190.0f, 124.0f, 64.0f);
+	private static SmButton PlayButton = new SmButton(buttonRect, "Play");
 
 	public void Draw() {
 		//Raylib.DrawRectangle(10, 10, 30, 50, Color.BLACK);
@@ -25,8 +25,10 @@ public class MainMenu : Menu
 		PlayButton.Draw();
 
 		if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_BUTTON_LEFT) 
-			&& PlayButton.IsClicked(Raylib.GetMousePosition())) {
-			Console.WriteLine("Clicked!");
+				&& PlayButton.IsClicked(Raylib.GetMousePosition())) {
+			GameData.menu = GameMenu.SMITHY;
+		} else if (PlayButton.IsClicked(Raylib.GetMousePosition())) {
+			PlayButton.SetClicked(false);
 		}
 		
 	}
