@@ -1,7 +1,6 @@
 namespace Game;
 
 using Raylib_CsLo;
-using System.Numerics;
 
 public class MainMenu : IMenu
 {

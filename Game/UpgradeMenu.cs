@@ -8,6 +8,8 @@ public class UpgradeMenu : IMenu
 
 	public void Draw()
 	{
+		GameUtil.DrawText(30, 16, "Upgrade", 32);
+
 		if (RayGui.GuiButton(backButton, "Back"))
 			GameData.Menu = GameMenu.SMITHY;
 		

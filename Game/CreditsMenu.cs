@@ -8,7 +8,7 @@ public class CreditsMenu : IMenu
 
 	public void Draw()
 	{
-		GameUtil.DrawText(30, 20, "Credits", 32);
+		GameUtil.DrawText(30, 16, "Credits", 32);
 
 		if(RayGui.GuiButton(backButton, "Back"))
 			GameData.Menu = GameMenu.MAIN_MENU;
