@@ -4,6 +4,7 @@ public enum GameMenu
 {
 	MAIN_MENU,
 	SMITHY,
+	ACTION,
 	UPGRADE,
 	TRADE,
 	INVENTORY,

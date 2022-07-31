@@ -8,6 +8,7 @@ public class GameData
 	public static Dictionary<GameMenu, IMenu> GameMenus = new(){
 		{ GameMenu.MAIN_MENU,      new MainMenu() },
 		{ GameMenu.SMITHY,       new SmithyMenu() },
+		{ GameMenu.ACTION,       new ActionMenu() },
 		{ GameMenu.UPGRADE,     new UpgradeMenu() },
 		{ GameMenu.CREDITS,     new CreditsMenu() },
 		{ GameMenu.INVENTORY, new InventoryMenu() }
