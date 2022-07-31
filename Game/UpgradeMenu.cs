@@ -11,7 +11,7 @@ public class UpgradeMenu : IMenu
 		GameUtil.DrawText(30, 16, "Upgrade", 32);
 
 		if (RayGui.GuiButton(backButton, "Back"))
-			GameData.Menu = GameMenu.SMITHY;
+			GameData.Menu = GameMenu.DASHBOARD;
 		
 		// TODO upgrades.
 	}

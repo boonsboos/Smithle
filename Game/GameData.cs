@@ -1,13 +1,14 @@
 namespace Game;
 
 using Raylib_CsLo;
+using System.Numerics;
 
 public class GameData
 {
 	public static GameMenu Menu = GameMenu.MAIN_MENU;
 	public static Dictionary<GameMenu, IMenu> GameMenus = new(){
 		{ GameMenu.MAIN_MENU,      new MainMenu() },
-		{ GameMenu.SMITHY,       new SmithyMenu() },
+		{ GameMenu.DASHBOARD, new DashboardMenu() },
 		{ GameMenu.ACTION,       new ActionMenu() },
 		{ GameMenu.UPGRADE,     new UpgradeMenu() },
 		{ GameMenu.CREDITS,     new CreditsMenu() },
@@ -18,9 +19,9 @@ public class GameData
 		{ GameAge.STONE, new StoneAge()}
 	};
 
-	public static Dictionary<Material, MaterialItem> MaterialInventory = new(){
-		{ Material.STONE, new(Material.STONE) },
-		{ Material.FLINT, new(Material.FLINT) },
+	public static Dictionary<Material, BigInteger> MaterialInventory = new(){
+		{ Material.STONE, new() },
+		{ Material.FLINT, new() },
 	};
 	public static string Materials = getMaterialItems();
 
@@ -36,17 +37,26 @@ public class GameData
 	private static string getMaterialItems() {
 		string buf = "";
 
-		foreach (KeyValuePair<Material, MaterialItem> i in MaterialInventory) {
-			buf += i.Key.ToString() + " x" + i.Value.count.ToString() + ";";
-		}
-
+		foreach (KeyValuePair<Material, BigInteger> i in MaterialInventory)
+			buf += $"{i.Key.ToString()} x {i.Value.ToString()};";
+		
 		return buf;
 	}
 
 	private static string getProducts() {
 		string buf = "";
+		if (ProductInventory.Count() == 0) return buf;
+
+		Product lastProduct = ProductInventory.Last<Product>();
+
 		foreach (var i in ProductInventory) {
-			buf += i.material.ToString() + i.type.ToString() + "(T${i.tier})"+ ";";
+			if (i != lastProduct)
+			{
+				buf += $"{i.material.ToString()} {i.type.ToString().ToLower()};";
+			} else 
+			{
+				buf += $"{i.material.ToString()} {i.type.ToString().ToLower()}";
+			}
 		}
 		
 		return buf;

@@ -12,10 +12,10 @@ public class MainMenu : IMenu
 		GameUtil.DrawText(30, 50, "Smithle", 72);
 
 		GameUtil.DrawText(30, 120,
-			"a game by boons and Smertieboi", 32.0f);
+			"by monkegame", 32.0f);
 
 		if (RayGui.GuiButton(playButton, "Play"))
-			GameData.Menu = GameMenu.SMITHY;
+			GameData.Menu = GameMenu.DASHBOARD;
 		
 		if (RayGui.GuiButton(credButton, "Credits"))
 			GameData.Menu = GameMenu.CREDITS;

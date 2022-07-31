@@ -2,7 +2,7 @@ namespace Game;
 
 using Raylib_CsLo;
 
-public class SmithyMenu : IMenu
+public class DashboardMenu : IMenu
 {
 	private static Rectangle actionButton    = GameUtil.Button(30, 50);
 	private static Rectangle tradeButton     = GameUtil.Button(30, 130);
@@ -11,7 +11,7 @@ public class SmithyMenu : IMenu
 
 	public void Draw()
 	{
-		GameUtil.DrawText(30, 16, "Smithy", 32);
+		GameUtil.DrawText(30, 16, "Dashboard", 32);
 		
 		if (RayGui.GuiButton(actionButton, "Action"))
 			GameData.Menu = GameMenu.ACTION;

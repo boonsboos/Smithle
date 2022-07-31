@@ -4,43 +4,65 @@ using Raylib_CsLo;
 
 public class StoneAge : Age
 {
-	// Progress field is inherited.
+	private static List<ProductType> allowed = new() {
+		ProductType.DAGGER,
+		ProductType.ARROW,
+		ProductType.SPEAR
+	};
 
-	public override bool PerformAction()
+	private static int randomType()
 	{
-		if (this.locked) return false;
+		return new Random().Next(0, 3);
+	}
 
-		if (Progress > 5) {
-			Progress = 0;
-
-			GameData.MaterialInventory[Material.STONE].count--;
-			GameData.MaterialInventory[Material.FLINT].count++;
-
-			return true;
+	public override bool RefineMaterial()
+	{
+		if (Progress < 5) {
+			Progress += Raylib.GetFrameTime();
+			return false;
 		}
 
-		Progress += Raylib.GetFrameTime();
-		return false;
+		Progress = 0;
+
+		GameData.MaterialInventory[Material.STONE]--;
+		GameData.MaterialInventory[Material.FLINT]++;
+		return true;
+	}
+
+	public override bool Forge()
+	{
+		if (Forging < 8) {
+			Forging += Raylib.GetFrameTime();
+			return false;
+		}
+
+		Forging = 0;
+
+		GameData.ProductInventory.Add(new Product(
+			Material.FLINT,
+			allowed[randomType()],
+			(float) new Random().NextDouble()
+		));
+		GameData.MaterialInventory[Material.FLINT]--;
+		return true;
 	}
 
 	public override bool CanPerform()
 	{
-		return GameData.MaterialInventory[Material.STONE].count > 0;
+		return GameData.MaterialInventory[Material.STONE] > 0;
 	}
 
 	public override bool CollectMaterials()
 	{
-		if (this.locked) return false;
-
-		if (Gathering > 5) {
-			if (new Random().NextDouble() > 0.75) {
-				GameData.MaterialInventory[Material.STONE].count++;
-			}
-			Gathering = 0;
-			return true;
+		if (Gathering < 5) {
+			Gathering += Raylib.GetFrameTime();
+			return false;
 		}
 
-		Gathering += Raylib.GetFrameTime();
-		return false;
+		if (new Random().NextDouble() > 0.10)
+			GameData.MaterialInventory[Material.STONE]++;
+
+		Gathering = 0;
+		return true;
 	}
 }

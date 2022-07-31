@@ -13,7 +13,7 @@ public class CreditsMenu : IMenu
 		if(RayGui.GuiButton(backButton, "Back"))
 			GameData.Menu = GameMenu.MAIN_MENU;
 
-		GameUtil.DrawText(30, 130, "Art:         Smertieboi", 32);
+		GameUtil.DrawText(30, 130, "Art:         Smertieboi, AMVKage, iLime", 32);
 		GameUtil.DrawText(30, 162, "Concept:     Smertieboi", 32);
 		GameUtil.DrawText(30, 194, "Programming: boons", 32);
 		

@@ -3,7 +3,7 @@ namespace Game;
 public enum GameMenu
 {
 	MAIN_MENU,
-	SMITHY,
+	DASHBOARD,
 	ACTION,
 	UPGRADE,
 	TRADE,

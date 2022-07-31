@@ -13,6 +13,7 @@ public class InventoryMenu : IMenu
 	private static bool showProducts;
 
 	private int scroll = 0;
+	private int select = 0;
 
 	public void Draw()
 	{
@@ -21,7 +22,7 @@ public class InventoryMenu : IMenu
 		GameUtil.DrawText(30, 16, "Inventory", 32);
 
 		if (RayGui.GuiButton(backButton, "Back"))
-			GameData.Menu = GameMenu.SMITHY;
+			GameData.Menu = GameMenu.DASHBOARD;
 
 
 		if (!showProducts)
@@ -38,9 +39,17 @@ public class InventoryMenu : IMenu
 				showProducts = false;
 			
 			GameUtil.DrawText(534, 16, "Products", 32);
+
+			int a = 0;
 			unsafe {
-				RayGui.GuiListView(invBounds, GameData.Products, &listScroll, -1);
+				a = RayGui.GuiListView(invBounds, GameData.Products, &listScroll, -1);
 			}
+
+			if (a >= 0) 
+				select = a;
+
+			if (select >= 0 && select < GameData.ProductInventory.Count())
+				GameUtil.DrawText(1030, 50, GameData.ProductInventory[select].ToString(), 32);
 		}
 
 		scroll = listScroll;

@@ -5,8 +5,8 @@ using System.Numerics;
 public enum ProductType
 {
 	DAGGER,
-	ARROWHEAD,
-	SPEARHEAD,
+	ARROW,
+	SPEAR,
 }
 
 public class Product
@@ -14,11 +14,33 @@ public class Product
 	public Material material;
 	public ProductType type;
 	public float quality;
-	public byte tier;
+	public byte tier = 0;
 
 	public Product(Material m, ProductType t, float q) {
 		material = m;
 		type = t;
 		quality = q;
+	}
+
+	public Product(Material m, ProductType t, float q, byte tr) {
+		material = m;
+		type = t;
+		quality = q;
+		tier = tr;
+	}
+
+	public override string ToString()
+	{
+		return material.ToString() + " " + type.ToString().ToLower();
+	}
+
+	public string GetQuality()
+	{
+		return "Quality: " + (quality * 100).ToString() + "%";
+	}
+
+	public string GetTier()
+	{
+		return "Tier: T" + tier.ToString();
 	}
 }
