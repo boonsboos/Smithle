@@ -21,4 +21,16 @@ public static class GameUtil
 			Raylib.BLACK
 		);
 	}
+
+	public static void DrawTextColored(float x, float y, string text, float textSize, Color c)
+	{
+		Raylib.DrawTextEx(
+			GameData.SmithleFont,
+			text,
+			new Vector2(x, y),
+			textSize,
+			.5f,
+			c
+		);
+	}
 }

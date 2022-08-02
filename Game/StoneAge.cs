@@ -19,7 +19,7 @@ public class StoneAge : Age
 	public override bool RefineMaterial()
 	{
 		if (Progress < 5) {
-			Progress += Raylib.GetFrameTime();
+			Progress += Raylib.GetFrameTime() + GameData.RefineSpeed;
 			return false;
 		}
 
@@ -33,13 +33,13 @@ public class StoneAge : Age
 	public override bool Forge()
 	{
 		if (Forging < 8) {
-			Forging += Raylib.GetFrameTime();
+			Forging += Raylib.GetFrameTime() + GameData.ForgingSpeed;
 			return false;
 		}
 
 		Forging = 0;
 
-		GameData.ProductInventory.Prepend(new Product(
+		GameData.ProductInventory.Add(new Product(
 			Material.FLINT,
 			allowed[randomType()],
 			GameData.CalculateQuality()
@@ -61,7 +61,7 @@ public class StoneAge : Age
 	public override bool CollectMaterials()
 	{
 		if (Gathering < 5) {
-			Gathering += Raylib.GetFrameTime();
+			Gathering += Raylib.GetFrameTime() + GameData.GatherSpeed;
 			return false;
 		}
 

@@ -14,7 +14,8 @@ public class GameData
 		{ GameMenu.ACTION,       new ActionMenu() },
 		{ GameMenu.SKILL,         new SkillMenu() },
 		{ GameMenu.CREDITS,     new CreditsMenu() },
-		{ GameMenu.INVENTORY, new InventoryMenu() }
+		{ GameMenu.INVENTORY, new InventoryMenu() },
+		{ GameMenu.PRESTIGE,   new PrestigeMenu() }
 	};
 
 	public static Dictionary<GameAge, Age> GameAges = new(){

@@ -8,6 +8,8 @@ public enum GameMenu
 	SKILL,
 	TRADE,
 	INVENTORY,
+	PRESTIGE,
+	OPTIONS,
 	CREDITS,
 }
 
