@@ -8,7 +8,7 @@ public class InventoryMenu : IMenu
 	private static Rectangle backButton = GameUtil.Button(30, 50);
 	private static Rectangle prodButton = GameUtil.Button(30, 130);
 
-	private static Rectangle invBounds  = new(210, 50, 800, 620);
+	private static Rectangle invBounds  = new(210, 50, 720, 620);
 
 	private static bool showProducts;
 
@@ -26,19 +26,32 @@ public class InventoryMenu : IMenu
 
 
 		if (!showProducts)
-		{
-			if (RayGui.GuiButton(prodButton, "Products"))
+			DrawMaterials(listScroll);
+		else
+			DrawProducts(listScroll);
+
+		scroll = listScroll;
+	}
+	
+	// draws material inventory
+	void DrawMaterials(int listScroll)
+	{
+		if (RayGui.GuiButton(prodButton, "Products"))
 				showProducts = true;
 
-			GameUtil.DrawText(534, 16, "Materials", 32);
-			unsafe {
-				RayGui.GuiListView(invBounds, GameData.Materials, &listScroll, -1);
-			}
-		} else {
-			if (RayGui.GuiButton(prodButton, "Materials"))
+		GameUtil.DrawText(500, 16, "Materials", 32);
+		unsafe {
+			RayGui.GuiListView(invBounds, GameData.Materials, &listScroll, -1);
+		}
+	}
+
+	// draws product inventory
+	void DrawProducts(int listScroll)
+	{
+		if (RayGui.GuiButton(prodButton, "Materials"))
 				showProducts = false;
 			
-			GameUtil.DrawText(534, 16, "Products", 32);
+			GameUtil.DrawText(500, 16, "Products", 32);
 
 			int a = 0;
 			unsafe {
@@ -48,12 +61,10 @@ public class InventoryMenu : IMenu
 			if (a >= 0) 
 				select = a;
 
-			if (select >= 0 && select < GameData.ProductInventory.Count())
-				GameUtil.DrawText(1030, 50, GameData.ProductInventory[select].ToString(), 32);
-		}
-
-		scroll = listScroll;
+			if (select < GameData.ProductInventory.Count()) {
+				GameUtil.DrawText(950, 50,  GameData.ProductInventory[select].GetName(),    32);
+				GameUtil.DrawText(950, 83,  GameData.ProductInventory[select].GetQuality(), 32);
+				GameUtil.DrawText(950, 115, GameData.ProductInventory[select].GetTier(),    32);
+			}
 	}
-
-	
 }

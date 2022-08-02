@@ -11,8 +11,7 @@ public class MainMenu : IMenu
 	{
 		GameUtil.DrawText(30, 50, "Smithle", 72);
 
-		GameUtil.DrawText(30, 120,
-			"by monkegame", 32.0f);
+		GameUtil.DrawText(30, 120, "by monkegame", 32);
 
 		if (RayGui.GuiButton(playButton, "Play"))
 			GameData.Menu = GameMenu.DASHBOARD;

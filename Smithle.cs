@@ -16,7 +16,7 @@ class Smithle
 		{
 			Raylib.BeginDrawing();
 			Raylib.ClearBackground(Raylib.WHITE);
-			Raylib.DrawFPS(0, 0);
+
 			RayGui.GuiSetFont(GameData.SmithleFont);
 
 			GameData.GameMenus[GameData.Menu].Draw();

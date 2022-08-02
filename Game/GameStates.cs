@@ -5,7 +5,7 @@ public enum GameMenu
 	MAIN_MENU,
 	DASHBOARD,
 	ACTION,
-	UPGRADE,
+	SKILL,
 	TRADE,
 	INVENTORY,
 	CREDITS,

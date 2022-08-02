@@ -29,14 +29,14 @@ public class Product
 		tier = tr;
 	}
 
-	public override string ToString()
+	public string GetName()
 	{
 		return material.ToString() + " " + type.ToString().ToLower();
 	}
 
 	public string GetQuality()
 	{
-		return "Quality: " + (quality * 100).ToString() + "%";
+		return "Quality: " + quality.ToString();
 	}
 
 	public string GetTier()

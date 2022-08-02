@@ -1,5 +1,6 @@
 namespace Game;
 
+using System.Numerics;
 using Raylib_CsLo;
 
 public class StoneAge : Age
@@ -38,18 +39,23 @@ public class StoneAge : Age
 
 		Forging = 0;
 
-		GameData.ProductInventory.Add(new Product(
+		GameData.ProductInventory.Prepend(new Product(
 			Material.FLINT,
 			allowed[randomType()],
-			(float) new Random().NextDouble()
+			GameData.CalculateQuality()
 		));
 		GameData.MaterialInventory[Material.FLINT]--;
 		return true;
 	}
 
-	public override bool CanPerform()
+	public override bool CanRefine()
 	{
 		return GameData.MaterialInventory[Material.STONE] > 0;
+	}
+
+	public override bool CanForge()
+	{
+		return GameData.MaterialInventory[Material.FLINT] > 0;
 	}
 
 	public override bool CollectMaterials()
@@ -59,10 +65,15 @@ public class StoneAge : Age
 			return false;
 		}
 
-		if (new Random().NextDouble() > 0.10)
+		if (new Random().NextSingle() > 0.10)
 			GameData.MaterialInventory[Material.STONE]++;
 
 		Gathering = 0;
 		return true;
+	}
+
+	public override BigInteger UpgradePrice()
+	{
+		return BigInteger.Zero;
 	}
 }
