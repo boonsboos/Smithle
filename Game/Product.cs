@@ -7,6 +7,9 @@ public enum ProductType
 	DAGGER,
 	ARROW,
 	SPEAR,
+	SHORTSWORD,
+	AXE,
+	BRACELET,
 }
 
 public class Product

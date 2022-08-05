@@ -72,6 +72,7 @@ public class ActionMenu : IMenu
 
 	void DrawForge()
 	{
+		
 		if (RayGui.GuiButton(forgeButton, "Forge") && GameData.GameAges[GameData.Age].CanForge())
 			forgingProduct = true;
 

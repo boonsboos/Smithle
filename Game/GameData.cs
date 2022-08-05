@@ -19,12 +19,17 @@ public class GameData
 	};
 
 	public static Dictionary<GameAge, Age> GameAges = new(){
-		{ GameAge.STONE, new StoneAge()}
+		{ GameAge.STONE,   new StoneAge() },
+		{ GameAge.BRONZE, new BronzeAge() },
 	};
 
 	public static Dictionary<Material, BigInteger> MaterialInventory = new(){
 		{ Material.STONE, new() },
 		{ Material.FLINT, new() },
+		{ Material.TIN,   new() },
+		{ Material.CARBON,new() },
+		{ Material.COPPER,new() },
+		{ Material.BRONZE,new() },
 	};
 	public static string Materials = getMaterialItems();
 
@@ -84,7 +89,7 @@ public class GameData
 
 	public static float CalculateQuality()
 	{
-		float quality = (float) Math.Log(1 * new Random().NextDouble(), .1);
+		float quality = (float) Math.Log(new Random().NextDouble(), .1);
 
 		if (quality > 50) {
 			quality -= (50 - ForgingSkill); // apply skill

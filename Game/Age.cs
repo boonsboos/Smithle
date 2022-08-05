@@ -12,5 +12,5 @@ public abstract class Age
 	public abstract bool Forge();
 	public abstract bool CanForge();
 	public abstract bool CollectMaterials();
-	public abstract BigInteger  UpgradePrice();
+	public abstract BigInteger UpgradePrice();
 }
