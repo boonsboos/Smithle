@@ -53,5 +53,7 @@ public class DashboardMenu : IMenu
 			GameData.Menu = GameMenu.PRESTIGE;
 			errorFlag = false;
 		}
+
+		// TODO draw currency
 	}
 }

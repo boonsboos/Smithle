@@ -17,12 +17,13 @@ public class SkillMenu : IMenu
 			GameData.Menu = GameMenu.DASHBOARD;
 		
 		DrawUpgrade(210, 50,  "Gather Speed",  GameData.GatherSpeed);
-		DrawUpgrade(210, 370, "Hire Gatherer", GameData.GatherSkill);
 		DrawUpgrade(475, 50,  "Refine Speed",  GameData.RefineSpeed);
-		DrawUpgrade(475, 370, "Refine Yield",  GameData.RefineSkill);
 		DrawUpgrade(735, 50,  "Forge Speed",  GameData.ForgingSpeed);
-		DrawUpgrade(735, 370, "Forge Luck",   GameData.ForgingSkill);
 		DrawUpgrade(995, 50,  "Polish Speed",  GameData.PolishSpeed);
+
+		DrawUpgrade(210, 370, "Hire Gatherer", GameData.GatherSkill);
+		DrawUpgrade(475, 370, "Refine Yield",  GameData.RefineSkill);
+		DrawUpgrade(735, 370, "Forge Luck",   GameData.ForgingSkill);
 		DrawUpgrade(995, 370, "Finer Cloths",  GameData.PolishSkill);
 	}
 

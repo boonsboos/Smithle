@@ -52,6 +52,8 @@ public class GameData
 	// TODO: load from config
 	// TODO: add more fields
 
+	// TODO: implement currency
+
 	private static string getMaterialItems() {
 		string buf = "";
 

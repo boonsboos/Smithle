@@ -21,6 +21,7 @@ public class BronzeAge : Age
 		ProductType.AXE,
 		ProductType.SHORTSWORD,
 		ProductType.BRACELET,
+		ProductType.PICKAXE,
 	};
 
 	private static Material m;

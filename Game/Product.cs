@@ -7,9 +7,17 @@ public enum ProductType
 	DAGGER,
 	ARROW,
 	SPEAR,
+	// bronze
 	SHORTSWORD,
 	AXE,
 	BRACELET,
+	PICKAXE,
+	// iron
+	LONGSWORD,
+	NECKLACE,
+	BATTLEAX,
+	HAMMER,
+	// classical
 }
 
 public class Product
